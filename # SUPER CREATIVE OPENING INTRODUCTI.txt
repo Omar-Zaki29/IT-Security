@@ -1,0 +1,126 @@
+============================================================
+📁 FILE SYSTEM BASICS
+============================================================
+ls
+cd
+cat
+echo
+stat
+mkdir
+rm
+nano
+
+
+============================================================
+🔐 FILE PERMISSIONS & ACCESS CONTROL
+============================================================
+chmod
+chown
+umask
+getfacl
+setfacl
+ACL (concept)
+
+
+============================================================
+👤 USERS, GROUPS & IDENTITY SYSTEM
+============================================================
+useradd
+usermod
+passwd
+passwd -S
+chage -l
+groups (concept)
+getent (group/user lookup)
+
+
+============================================================
+🧠 AUTHENTICATION & PASSWORD SYSTEM
+============================================================
+passwd
+chage -l
+sudo
+sudoers (file concept)
+
+
+============================================================
+🌐 SSH AUTHENTICATION
+============================================================
+ssh
+ssh-keygen
+
+
+============================================================
+🔑 SSH KEY GENERATION & MANAGEMENT
+============================================================
+ssh-keygen
+ssh (login usage)
+
+
+============================================================
+💾 FILE SYSTEM ENCRYPTION
+============================================================
+cryptsetup
+cryptsetup luksFormat
+lsblk
+gdisk
+mount
+systemctl
+reboot
+mkfs.ext2
+mkfs.xfs
+swap (concept)
+xfs (concept)
+ext2 (concept)
+
+
+============================================================
+🔐 OPENSSL CRYPTOGRAPHY TOOLKIT
+============================================================
+
+--- KEY GENERATION / RSA ---
+openssl genrsa
+openssl genrsa -out web.key 1024
+openssl rsa
+openssl pkeyutl
+openssl pkeyutl -encrypt
+openssl pkeyutl -decrypt
+
+--- HASHING / SIGNING ---
+openssl dgst -sha256
+openssl dgst -sign
+openssl dgst -verify
+
+--- CERTIFICATES / PKI ---
+openssl req
+openssl req -new
+openssl req -new -out web.csr -key web.key
+openssl x509
+openssl x509 -req
+openssl x509 -in web.csr -out web.crt
+openssl x509 -text -noout
+
+--- CERTIFICATE AUTHORITY ---
+ca.crt
+ca.key
+ca serial (concept)
+trust anchor ca.crt
+trust list | grep ...
+
+--- REVOCATION LIST ---
+openssl crl -text -noout
+
+
+============================================================
+🧰 SYSTEM / DISK / SECURITY UTILITIES
+============================================================
+lsblk
+gdisk
+mount
+mkfs.ext2
+mkfs.xfs
+swap
+
+getenforce
+setenforce
+restorecon
