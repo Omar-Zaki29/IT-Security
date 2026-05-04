@@ -1,0 +1,79 @@
+Generate Private Key
+openssl genrsa -out secure_server.key 4096
+
+Hash a File
+openssl dgst -sha256 db_dump.sql
+
+Asymmetric Encryption (Using a Public Key)
+openssl pkeyutl -encrypt -in passwords.txt -pubin -inkey manager_public.pem -out passwords.enc
+
+Asymmetric Decryption (Using a Private Key)
+openssl pkeyutl -decrypt -in mission.enc -inkey agent.key -out mission.txt
+
+Digital Signing (Hash + Encrypt with Private Key)
+openssl dgst -sha256 -sign legal.key -out contract.sig contract.pdf
+
+Verify Signature (Hash + Decrypt with Public Key)
+openssl dgst -sha256 -verify contractor.pub -signature update.sig update.sh
+
+Generate CSR (Certificate Signing Request)
+openssl req -new -key website.key -out website.csr
+
+Create Certificate (Convert CSR to CRT)
+openssl x509 -req -in website.csr -out website.crt
+
+Read Certificate Details (Human-readable CRT)
+openssl x509 -in expired_web.crt -text -noout
+
+Read Revocation List (Human-readable CRL)
+openssl crl -in blacklist.crl -text -noout
+
+You have a new intern named sarah. You need to create a new user account for her. The company security policy strictly dictates that you must create her home directory automatically during this step, and you must explicitly set her login shell to /bin/bash.
+useradd -m -s /bin/bash sarah
+
+A developer named alex left the company. His project directory is located at /var/www/project. You need to transfer ownership of this directory, and every single file and folder inside of it, to a new user named admin and a group named security.
+chown -R admin:security /var/www/project
+
+You are monitoring the system logs and notice suspicious activity coming from an employee account named hacker_bob. You need to immediately lock his account so he cannot authenticate, but you must not delete his account or his files, as HR needs them for an investigation.
+usermod -L hacker_bob
+
+You have just generated a private SSH key file named id_rsa. Security protocols mandate that only the owner can read and write to this file. The group, and all other users, must have zero permissions (no read, no write, no execute).
+chmod 600 id_rsa
+
+You need to securely log into a remote database server to perform maintenance. The server's IP address is 10.0.5.25 and your designated service account username on that machine is dbadmin
+ssh dbadmin@10.0.5.25
+
+You just installed the Nginx web server (service name: nginx) on a new Linux machine. You need to configure the system so that this web server automatically starts up every time the server boots or reboots.
+systemctl enable nginx
+
+You have a file named project_plans.txt. You need to grant a specific user named sarah explicit read and write permissions to this file using Access Control Lists (ACLs), without changing the base file owner or group.
+setfacl -m u:sarah:rw project_plans.txt
+
+You have added a new hard drive to your server, and the raw partition is located at /dev/sdb1. Security policy mandates that this drive must be fully encrypted before any file system is created on it.
+cryptsetup luksFormat /dev/sdb1
+
+--------------
+
+You are troubleshooting a web server that is suddenly giving "Permission Denied" errors when trying to read files, even though the standard chmod permissions are perfectly fine. You suspect SELinux is blocking the access.
+You need to temporarily switch SELinux from "Enforcing" mode to "Permissive" mode so you can test if the web server starts working.
+setenforce 0
+
+You need to verify the password aging details for a user account named admin. Specifically, you want to see exactly when their password was last changed, when it is set to expire, and how many warning days they get before expiration.
+Write the exact single command to list all of this password aging information for the admin user.
+chage -l admin
+
+You want a quick, single-line status check on the user sarah's password. You don't need the full detailed aging report from chage; you just need to know if her account password is currently Locked (L), Usable/Set (P), or Passwordless (NP).
+passwd -S sarah
+
+Company security policy dictates that administrative passwords must be rotated regularly to prevent stale credentials. You need to configure the user account admin so that their password expires and must be changed every 90 days.
+chage -M 90 admin
+
+
+
+
+
+
+
+
+
+
