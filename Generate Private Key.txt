@@ -69,6 +69,25 @@ Company security policy dictates that administrative passwords must be rotated r
 chage -M 90 admin
 
 
+You want to set your session's default file creation mask so that new files are automatically created with 640 (rw-r-----) permissions and directories with 750 (rwxr-x---).
+umask 027
+
+You need to generate a new SSH key pair, but company policy requires it to be an RSA key with a strength of 4096 bits.
+ssh-keygen -t rsa -b 4096
+
+You previously formatted /dev/sdb1 with LUKS. Write the command to unlock this partition and map it so the system can access it as secure_data.
+cryptsetup luksOpen /dev/sdb1 secure_data
+
+You have a Certificate Signing Request named server.csr. Write the command to read its contents in human-readable text and suppress the raw base64 output.
+openssl req -in server.csr -text -noout
+(Note: Because it is a .csr file, you must use the req tool, not the x509 tool).
+
+
+Write the command to extract the public key from an existing private key file named private.key and save it as public.pem.
+openssl rsa -in private.key -pubout -out public.pem
+
+
+
 
 
 
