@@ -1,0 +1,132 @@
+PP
+
+Find the directrory in I root/86344/, where the onwer is not the root user. Write the full (absolute) path name to the file: /root/86344.ans
+find /root/86344/ -not -user root > /root/86344.ans
+
+Create new user with name user86315 and lock the password of the user
+useradd user86315
+passwd -l user86315
+
+Who signed the file/root/contract-86302.txt, Anne, Bob, Carol, Daniel or Eve?
+The signature was created with the help of the SHA 256 hash algorithm and stored in the file: /root/contract-86302.sha256.signature
+The public key of Anne is in /root/Anne-86302.pub.pem
+the public key off Bob is in/root/Bob-86302.pub.pem
+the public key of Carol is in /root/Carol-86302.pub.pem
+the public key of Daniel is in /root/Daniel-86302.pub.pem
+the public key of Eve is in /root/Eve-86302.pub.pem
+Write the answer (the name) to the file: /root/86302.ans
+openssl dgst -verify /root/Anne-86302.pub.pem -signature /root/contract-86302.sha256.signature -sha256 /root/contract-86302.txt
+(when verification is ok then this is the correct user)
+echo Carol > /root/86302.ans
+
+Download the file 5d3a8e1b with the help of the command below.
+curl -o/5d3a8e1b https://progcont.hu/docs/IT-Security/loop/5d3a8e1b
+The file contains an encrypted filesystem in LUKS format. The password is: 5d3a8e1b. Copy the content of the filesystem to the directory: /root
+curl -o/5d3a8e1b https://progcont.hu/docs/IT-Security/loop/5d3a8e1b
+losetup -f /5d3a8e1b
+cryptsetup luksOpen /dev/loop0 loop
+Enter passphrase for /5d3a8e1b: 5d3a8e1b
+mount /dev/mapper/loop0 /mnt
+ls /mnt --> 070f lost+found
+cp /mnt/070f /root
+cp -r /mnt/lost+found/ /root
+
+Decrypt the /root/86261.enc file by using 86261 as the key and 0 as the initialization vector. The file was encrypted by using the aes-128-cbc algorithm. Save the result as/root/86261.txt.
+openssl aes-128-cbc -d -in /root/86261.enc -k 86261 -iv 0 > /root/86261.txt
+
+Decrypt the /root/86257.enc file by using the 86257 password and the des-ede algorithm. Save the result as /root/86257.txt.
+openssl des-ede -d -in /root/86257.enc -k 86257 > /root/86257.txt
+
+Sign the /root/86247.txt file with the following private key. Use the SHA 256 hash function. Save the signature as/root/86247.sign!
+-----BEGIN PRIVATE KEY-----
+MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcA 6JBmdQL4fJmDZolEKJIojg9IapEI95SV5gsZb9+K6. xDaWM0rN/wvM+MzMDoz2I0ep6I/VQMFvq9/kL0iwhl iAtr9xl+3Gx6VIZ5ZgzpSHOeFspTAgMBAAECgYBpf/gYrIJ+8RvQOALRQeHz2iNk5G/oW8JaEs1lYHaD10j miJbcZaX0N6pY11BZOVaGgSMWR2/frQVVPH9pdVk51 yeMUer8bh5/GSJL8YQJBAONwyYVu0Qo2dkVZTtGorr YvzPdABDhjY+kjeA0LhT1xVwFr7MgekGks/EgbKlbl gXJTNNqbNgLf3+tQBNru8HCo1Ed4HPscx5tpfZHie mKVDAkBiEuyTI0hvwvRVCyG1vqsWWNOXBDUILAHN7) qJ5YHa8Ni3wDYmRSe4crGG1k/3jBAkEAss3/mGZril PoB4sjCmp2jQVC0ko8AXwqGOMKhg85KfyJd7VqlLW: Dmqu2Q+KrIyYSDfWwdFDda6qkH9QHoTQ2aE6RtkShl 200qC6Dvgv2y/A==
+-----END PRIVATE KEY-----
+umask 077
+cat > k
+openssl dgst -sign k -sha256 -out /root/86247.sign /root/86247.txt
+xxd /root/86247.sign
+
+set the permission of the /root/86237.txt file to read-only
+chmod 444 /root/86237.txt
+
+Give read-only permissions to the operator user on the /root/86224.txt file with a new USER ACL entry. (Do not change anything else about the file and do not give or take any other permissions.)
+setfact -m u:operator:r /root/86224.txt
+
+Set owner of the/root/86211.txt file to the operator user and the group users. (Do not change anything else about the file.)
+chown operator:users /root/86211.txt
+
+create a file with name /root/86198.dat and with a size of 861980 bytes
+dd if=/dev/zero of=/root/86198.dat bs=861980 count=1
+
+Generate an 1024 bit RSA key and save it as /root/86191.pem as a PKCS8 private key.
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:1024 -out /root/86191.pem
+
+Create a new/dev/sdc1 partition on the drive /dev/sdc. Format the partition with ext2 filesystem and mount it to the /mnt folder in read only mode.
+fdisk /dev/sdc
+command : n
+Command : w
+mkfs.ext2 /dev/sdc1
+mount -o ro /dev/sdc1 /mnt
+
+Allow the owner of the following private key to log in as the root user.
+-BEGIN PRIVATE KEY-----
+MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdA GPNsk+p9HFUTWSM1ka80tX0Hu80+bqXEf86g+gMOB v4ijljj/6xJcCqPP2LVeYVM1aDWjYADHmHRFOJWLC u7RSsX9W8mCAqx1xlpfkpiQiiTu5AgMBAAECgYBJE EOVlh/BTL+UY65NXFg7jneCo2zdnPKVJwtlodtpZ+ D70FVscj9TSIzP1lHBNcWdt1qkZPR1ADnauueg818 H0cY6qRQjkNgipJVCQJBA02RAVk21E34jE6+6w2/j 2DDkBxVHKYLdtnnL9eX3069T4UKYEZjWq58GkGXqA kfTW7x4pFwgjLEyd+Kzs5LpmU8MxEL6ndXZVHnmy 1 z4qjAkAF1R6MWy1BMM35DPTmZIKG9JA/+1kyPKsZc +ary12w0t0d95A/iibqy781RwzoDAKEAhAS4P80w5 b7qMv9aETRajXJ7AXVdnff1rX9uyVFydlW3yMdMxm tTaU838GJB5L8Afq/HIW+Biw/GmgcuKMhQPREOdIk aEUNnE4+0e7tQXE=
+END PRIVATE KEY------
+cat > kk
+umask
+mkdir .ssh
+ssh-keygen -y -f kk > .ssh/authorized_keys
+stat .ssh
+stat .ssh/authorized_keys
+
+-------------------------------------------------------------
+
+Create the user160184 user and generate a new default ssh RSA key (/home/user160184/.ssh/id_rsa) for it without passphrase. Allows user160184 to log as root with the help of the RSA private key.
+useradd user160184
+su user160184
+ssh-keygen
+ssh-copy-id root@localshot
+yes
+password: exam
+exit
+
+Find the directory in /root/160171/, in which the sticky bit is set. Write the full (absolute) path name to the file: /root/160171.ans
+find /root/160171/ -perm /1000 > /root/160171.ans
+
+Configure the user account operator so that its password expires on 2021-07-24 and its maximum number of days between password change is 100.
+chage operator -M 100
+chage operator -d 2021-04-15
+
+Set the permissions of the file /root/160101.txt So that its permissions shows as -r--rws--T in the directory listing.
+chmod 3470 /root/160101.txt
+
+Delete all ACL entries of the file /root/160093.txt
+setfacl -b /root/160093.txt
+
+copy the first 70 byte of the file /root/160067.dat to the file /root/160067.part
+dd if=/root/160067.dat of=/160067.part bs=70 count=1
+
+Create a new crypto_LUKS encrypted xfs filesystem on /dev/sdc and mount it to the /mnt directory.
+cryptsetup luksFormat /dev/sdc 
+YES
+Passphrase: 
+
+cryptsetup luksOpen /dev/sdc x
+Passphrase: APPLEapple
+mkfs.xfs /dev/mapper/x
+umount /mnt/
+mount /dev/mapper/x /mnt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
