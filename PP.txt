@@ -20,9 +20,9 @@ openssl dgst -verify /root/Anne-86302.pub.pem -signature /root/contract-86302.sh
 echo Carol > /root/86302.ans
 
 Download the file 5d3a8e1b with the help of the command below.
-curl -o/5d3a8e1b https://progcont.hu/docs/IT-Security/loop/5d3a8e1b
+curl -o /5d3a8e1b https://progcont.hu/docs/IT-Security/loop/5d3a8e1b
 The file contains an encrypted filesystem in LUKS format. The password is: 5d3a8e1b. Copy the content of the filesystem to the directory: /root
-curl -o/5d3a8e1b https://progcont.hu/docs/IT-Security/loop/5d3a8e1b
+curl -o /5d3a8e1b https://progcont.hu/docs/IT-Security/loop/5d3a8e1b
 losetup -f /5d3a8e1b
 cryptsetup luksOpen /dev/loop0 loop
 Enter passphrase for /5d3a8e1b: 5d3a8e1b
@@ -30,9 +30,10 @@ mount /dev/mapper/loop0 /mnt
 ls /mnt --> 070f lost+found
 cp /mnt/070f /root
 cp -r /mnt/lost+found/ /root
+OR (cp -a /mnt/* /root/)
 
 Decrypt the /root/86261.enc file by using 86261 as the key and 0 as the initialization vector. The file was encrypted by using the aes-128-cbc algorithm. Save the result as/root/86261.txt.
-openssl aes-128-cbc -d -in /root/86261.enc -k 86261 -iv 0 > /root/86261.txt
+openssl aes-128-cbc -d -in /root/86261.enc -K 86261 -iv 0 > /root/86261.txt
 
 Decrypt the /root/86257.enc file by using the 86257 password and the des-ede algorithm. Save the result as /root/86257.txt.
 openssl des-ede -d -in /root/86257.enc -k 86257 > /root/86257.txt
@@ -50,7 +51,7 @@ set the permission of the /root/86237.txt file to read-only
 chmod 444 /root/86237.txt
 
 Give read-only permissions to the operator user on the /root/86224.txt file with a new USER ACL entry. (Do not change anything else about the file and do not give or take any other permissions.)
-setfact -m u:operator:r /root/86224.txt
+setfacl -m u:operator:r /root/86224.txt
 
 Set owner of the/root/86211.txt file to the operator user and the group users. (Do not change anything else about the file.)
 chown operator:users /root/86211.txt
@@ -85,7 +86,7 @@ Create the user160184 user and generate a new default ssh RSA key (/home/user160
 useradd user160184
 su user160184
 ssh-keygen
-ssh-copy-id root@localshot
+ssh-copy-id root@localhost
 yes
 password: exam
 exit
@@ -104,7 +105,7 @@ Delete all ACL entries of the file /root/160093.txt
 setfacl -b /root/160093.txt
 
 copy the first 70 byte of the file /root/160067.dat to the file /root/160067.part
-dd if=/root/160067.dat of=/160067.part bs=70 count=1
+dd if=/root/160067.dat of=/root/160067.part bs=70 count=1
 
 Create a new crypto_LUKS encrypted xfs filesystem on /dev/sdc and mount it to the /mnt directory.
 cryptsetup luksFormat /dev/sdc 
