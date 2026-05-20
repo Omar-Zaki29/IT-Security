@@ -102,7 +102,7 @@ exit
 
 Find the directory in /root/160171/, in which the sticky bit is set. Write the full (absolute) path name to the file: /root/160171.ans
 find /root/160171/ -perm /1000 > /root/160171.ans
-find /root/17115-perm-1000 >/root/17115.ans
+File: find /root/17115 -perm -1000 >/root/17115.ans
 Gemini: find /root/160171/ -type d -perm /1000 > /root/160171.ans
 
 Configure the user account operator so that its password expires on 2021-07-24 and its maximum number of days between password change is 100.
