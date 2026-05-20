@@ -38,6 +38,9 @@ openssl aes-128-cbc -d -in /root/86261.enc -K 86261 -iv 0 > /root/86261.txt
 Decrypt the /root/86257.enc file by using the 86257 password and the des-ede algorithm. Save the result as /root/86257.txt.
 openssl des-ede -d -in /root/86257.enc -k 86257 > /root/86257.txt
 
+Decrypt /root/203516.enc using password 203516, des-ede, and pbkdf2.
+openssl enc -des-ede -d -pbkdf2 -in /root/203516.enc -out /root/203516.txt -pass pass:203516
+
 Sign the /root/86247.txt file with the following private key. Use the SHA 256 hash function. Save the signature as/root/86247.sign!
 -----BEGIN PRIVATE KEY-----
 MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcA 6JBmdQL4fJmDZolEKJIojg9IapEI95SV5gsZb9+K6. xDaWM0rN/wvM+MzMDoz2I0ep6I/VQMFvq9/kL0iwhl iAtr9xl+3Gx6VIZ5ZgzpSHOeFspTAgMBAAECgYBpf/gYrIJ+8RvQOALRQeHz2iNk5G/oW8JaEs1lYHaD10j miJbcZaX0N6pY11BZOVaGgSMWR2/frQVVPH9pdVk51 yeMUer8bh5/GSJL8YQJBAONwyYVu0Qo2dkVZTtGorr YvzPdABDhjY+kjeA0LhT1xVwFr7MgekGks/EgbKlbl gXJTNNqbNgLf3+tQBNru8HCo1Ed4HPscx5tpfZHie mKVDAkBiEuyTI0hvwvRVCyG1vqsWWNOXBDUILAHN7) qJ5YHa8Ni3wDYmRSe4crGG1k/3jBAkEAss3/mGZril PoB4sjCmp2jQVC0ko8AXwqGOMKhg85KfyJd7VqlLW: Dmqu2Q+KrIyYSDfWwdFDda6qkH9QHoTQ2aE6RtkShl 200qC6Dvgv2y/A==
