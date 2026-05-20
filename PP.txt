@@ -26,7 +26,7 @@ curl -o /5d3a8e1b https://progcont.hu/docs/IT-Security/loop/5d3a8e1b
 losetup -f /5d3a8e1b
 cryptsetup luksOpen /dev/loop0 loop
 Enter passphrase for /5d3a8e1b: 5d3a8e1b
-mount /dev/mapper/loop0 /mnt
+mount /dev/mapper/loop /mnt
 ls /mnt --> 070f lost+found
 cp /mnt/070f /root
 cp -r /mnt/lost+found/ /root
