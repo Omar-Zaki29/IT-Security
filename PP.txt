@@ -73,8 +73,8 @@ Allow the owner of the following private key to log in as the root user.
 -BEGIN PRIVATE KEY-----
 MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdA GPNsk+p9HFUTWSM1ka80tX0Hu80+bqXEf86g+gMOB v4ijljj/6xJcCqPP2LVeYVM1aDWjYADHmHRFOJWLC u7RSsX9W8mCAqx1xlpfkpiQiiTu5AgMBAAECgYBJE EOVlh/BTL+UY65NXFg7jneCo2zdnPKVJwtlodtpZ+ D70FVscj9TSIzP1lHBNcWdt1qkZPR1ADnauueg818 H0cY6qRQjkNgipJVCQJBA02RAVk21E34jE6+6w2/j 2DDkBxVHKYLdtnnL9eX3069T4UKYEZjWq58GkGXqA kfTW7x4pFwgjLEyd+Kzs5LpmU8MxEL6ndXZVHnmy 1 z4qjAkAF1R6MWy1BMM35DPTmZIKG9JA/+1kyPKsZc +ary12w0t0d95A/iibqy781RwzoDAKEAhAS4P80w5 b7qMv9aETRajXJ7AXVdnff1rX9uyVFydlW3yMdMxm tTaU838GJB5L8Afq/HIW+Biw/GmgcuKMhQPREOdIk aEUNnE4+0e7tQXE=
 END PRIVATE KEY------
+umask 077
 cat > kk
-umask
 mkdir .ssh
 ssh-keygen -y -f kk > .ssh/authorized_keys
 stat .ssh
