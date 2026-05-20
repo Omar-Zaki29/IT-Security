@@ -121,7 +121,7 @@ mount /dev/mapper/x /mnt
 remove those files from the directory ... that are not owned by the root
 
 Create a self-signed certificate for CN self.my-factory.eu and save it to /root/self.my-factory.eu.crt.
-openssl req -x509 -newkey rsa:2048 -nodes -keyout /root/self.my-factory.eu.key \-out /root/self.my-factory.eu.crt -days 365 -subj "/CN=self.my-factory.eu"
+openssl req -x509 -newkey rsa:2048 -nodes -keyout /root/self.my-factory.eu.key -out /root/self.my-factory.eu.crt -days 365 -subj "/CN=self.my-factory.eu"
 
 which of the following has been signed via jjj.sign
 wgweg.txt
@@ -131,6 +131,9 @@ and the public key egegeg sign the same doc and save signature to egeg.ans use h
 In the firewalld settings, allow access to the 9000 TCP port in the dmz zone. Make sure the changes are permanent too.
 firewall-cmd --zone=dmz --add-port=9000/tcp --permanent
 firewall-cmd --reload
+
+Sign the certificate signature request stored in /root/my-factory.csr using the certificate stored in /root/my-root-ca.crt and the corresponding private key stored in /root/my-root-ca.key. Save the signed certificate to the file: /root/my-factory.crt.
+openssl x509 -req -in /root/my-factory.csr -CA /root/my-root-ca.crt -CAkey /root/my-root-ca.key -CAcreateserial -out /root/my-factory.crt #-days 365
 
 
 
