@@ -32,6 +32,11 @@ ls /mnt --> 070f lost+found
 cp /mnt/070f /root
 cp -r /mnt/lost+found/ /root
 OR (cp -a /mnt/* /root/)
+Gemini: curl -o /5d3a8e1b https://progcont.hu/docs/IT-Security/loop/5d3a8e1b
+cryptsetup luksOpen /5d3a8e1b loop
+# (Enter passphrase: 5d3a8e1b)
+mount /dev/mapper/loop /mnt
+cp -a /mnt/. /root/
 
 Decrypt the /root/86261.enc file by using 86261 as the key and 0 as the initialization vector. The file was encrypted by using the aes-128-cbc algorithm. Save the result as/root/86261.txt.
 openssl aes-128-cbc -d -in /root/86261.enc -K 86261 -iv 0 > /root/86261.txt
@@ -97,6 +102,8 @@ exit
 
 Find the directory in /root/160171/, in which the sticky bit is set. Write the full (absolute) path name to the file: /root/160171.ans
 find /root/160171/ -perm /1000 > /root/160171.ans
+find /root/17115-perm-1000 >/root/17115.ans
+Gemini: find /root/160171/ -type d -perm /1000 > /root/160171.ans
 
 Configure the user account operator so that its password expires on 2021-07-24 and its maximum number of days between password change is 100.
 chage operator -M 100
@@ -161,6 +168,7 @@ firewall-cmd --reload
 Sign the certificate signature request stored in /root/my-factory.csr using the certificate stored in /root/my-root-ca.crt and the corresponding private key stored in /root/my-root-ca.key. Save the signed certificate to the file: /root/my-factory.crt.
 openssl x509 -req -in /root/my-factory.csr -CA /root/my-root-ca.crt -CAkey /root/my-root-ca.key -CAcreateserial -out /root/my-factory.crt #-days 365
 
+Find the folder inside the /root/17107/ folder, which has an enabled sticky bit. Save the full path of this folder into the /root/17107.ans file.
 
 
 
