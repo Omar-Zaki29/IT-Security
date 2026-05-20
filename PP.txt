@@ -120,8 +120,8 @@ mount /dev/mapper/x /mnt
 
 remove those files from the directory ... that are not owned by the root
 
-create a self signed certificate for domain 
-CN skdkdk.eu and save the cert to dfkkffk.eu.crt
+Create a self-signed certificate for CN self.my-factory.eu and save it to /root/self.my-factory.eu.crt.
+openssl req -x509 -newkey rsa:2048 -nodes -keyout /root/self.my-factory.eu.key \-out /root/self.my-factory.eu.crt -days 365 -subj "/CN=self.my-factory.eu"
 
 which of the following has been signed via jjj.sign
 wgweg.txt
