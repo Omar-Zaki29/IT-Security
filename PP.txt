@@ -124,10 +124,31 @@ find /root/160171/ -type f -not -user root -delete
 Create a self-signed certificate for CN self.my-factory.eu and save it to /root/self.my-factory.eu.crt.
 openssl req -x509 -newkey rsa:2048 -nodes -keyout /root/self.my-factory.eu.key -out /root/self.my-factory.eu.crt -days 365 -subj "/CN=self.my-factory.eu"
 
-which of the following has been signed via jjj.sign
-wgweg.txt
-sdfdf.txt
-and the public key egegeg sign the same doc and save signature to egeg.ans use hasg function and the foloowing priv key hehehr
+Which one of the following files has been signed via /root/203514.sign?
+/root/203514A.txt
+/root/203514B.txt
+/root/203514C.txt
+The signature has been generated using SHA256 hash function, and the public key of the one who signed is:
+-----BEGIN PUBLIC KEY-----
+MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJWEdsdK3icjH7ZpEJDHwo8wm4I0KPu5
+ITIBwQAF5bqzFX6mZrhhgAvL0Jf+GCwgpr7YUqfoDt9hzZVwZ+7W8tUCAwEAAQ==
+-----END PUBLIC KEY-----
+Sign the same document and save the signature to /root/203514.ans. To generate the signature, use SHA256 hash function and the following private key:
+Plaintext
+-----BEGIN RSA PRIVATE KEY-----
+MIIBOgIBAAJBAMAoDEl1G8AwwRN+a+jcqFC2armHPhec9gwL8BLKTX+iFvA+LC9m
+RbuoGgJoVZA2s7xU9OnfjRN
+-----END RSA PRIVATE KEY-----
+
+cat > pubkey.pem
+# [Paste the PUBLIC KEY block here and press Ctrl+D]
+openssl dgst -sha256 -verify pubkey.pem -signature /root/203514.sign /root/203514A.txt
+openssl dgst -sha256 -verify pubkey.pem -signature /root/203514.sign /root/203514B.txt
+openssl dgst -sha256 -verify pubkey.pem -signature /root/203514.sign /root/203514C.txt
+umask 077
+cat > privkey.pem
+# [Paste the RSA PRIVATE KEY block here and press Ctrl+D]
+openssl dgst -sha256 -sign privkey.pem -out /root/203514.ans /root/203514X.txt
 
 In the firewalld settings, allow access to the 9000 TCP port in the dmz zone. Make sure the changes are permanent too.
 firewall-cmd --zone=dmz --add-port=9000/tcp --permanent
