@@ -2,6 +2,7 @@ PP
 
 Find the directrory in I root/86344/, where the onwer is not the root user. Write the full (absolute) path name to the file: /root/86344.ans
 find /root/86344/ -not -user root > /root/86344.ans
+Gemini : find /root/86344/ -type d -not -user root > /root/86344.ans
 
 Create new user with name user86315 and lock the password of the user
 useradd user86315
