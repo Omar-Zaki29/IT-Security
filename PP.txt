@@ -128,6 +128,10 @@ wgweg.txt
 sdfdf.txt
 and the public key egegeg sign the same doc and save signature to egeg.ans use hasg function and the foloowing priv key hehehr
 
+In the firewalld settings, allow access to the 9000 TCP port in the dmz zone. Make sure the changes are permanent too.
+firewall-cmd --zone=dmz --add-port=9000/tcp --permanent
+firewall-cmd --reload
+
 
 
 
