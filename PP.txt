@@ -118,7 +118,8 @@ mkfs.xfs /dev/mapper/x
 umount /mnt/
 mount /dev/mapper/x /mnt
 
-remove those files from the directory ... that are not owned by the root
+remove those files from the directory /root/160171/ that are not owned by the root
+find /root/160171/ -type f -not -user root -delete
 
 Create a self-signed certificate for CN self.my-factory.eu and save it to /root/self.my-factory.eu.crt.
 openssl req -x509 -newkey rsa:2048 -nodes -keyout /root/self.my-factory.eu.key -out /root/self.my-factory.eu.crt -days 365 -subj "/CN=self.my-factory.eu"
